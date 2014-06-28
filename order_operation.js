@@ -86,23 +86,30 @@ function complete_order(){
                     $('#complete_status'+order_id).removeClass('loading').addClass('fail');
                 },
                 complete: function(){
-                    //send tracking number
-                    jQuery.ajax({
-                        url : 'http://' + document.domain + '/wp-admin/admin-ajax.php',
-                        type: 'POST',
-                        dataType: 'text',
-                        data:{action:'woocommerce_add_order_note',post_id:post_id,note:order_id_list.getTrackingNumber(order_id),note_type:'customer',security:security},
-                        success: function(){
-                            $('#note_status'+order_id).removeClass('loading').addClass('ok');
-                        },
-                        error: function(){
-                            $('#note_status'+order_id).removeClass('loading').addClass('fail');
-                        },
-                        complete: function(){
-                            //next order
-                            complete_order();
-                        }
-                    });
+                    var tracking_number = order_id_list.getTrackingNumber(order_id);
+                    if(tracking_number != ''){
+                        //send tracking number
+                        jQuery.ajax({
+                            url : 'http://' + document.domain + '/wp-admin/admin-ajax.php',
+                            type: 'POST',
+                            dataType: 'text',
+                            data:{action:'woocommerce_add_order_note',post_id:post_id,note:tracking_number,note_type:'customer',security:security},
+                            success: function(){
+                                $('#note_status'+order_id).removeClass('loading').addClass('ok');
+                            },
+                            error: function(){
+                                $('#note_status'+order_id).removeClass('loading').addClass('fail');
+                            },
+                            complete: function(){
+                                //next order
+                                complete_order();
+                            }
+                        });
+                    }
+                    else{
+                        $('#note_status'+order_id).removeClass('loading').addClass('ok');
+                        complete_order();
+                    }
                 }
             });
         }
