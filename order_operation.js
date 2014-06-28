@@ -62,6 +62,7 @@ var $operate_status_list;
 
 
 function complete_order(){
+    i++;
     if(i > tr_list.length-1) return;
     var $tr = $(tr_list[i]);
     var order_id = $tr.find('a strong').html().replace('#','');
@@ -99,23 +100,34 @@ function complete_order(){
                         },
                         complete: function(){
                             //next order
-                            i++;
                             complete_order();
                         }
                     });
                 }
             });
         }
+        else{
+            complete_order();
+        }
+    }
+    else{
+        complete_order();
     }
 }
 
 $('#operate_win .operate-btn').click(function(){
     order_id_list = eval($('#order_id_list').val());
-    i=0;
+    i=-1;
     tr_list = $('#the-list').children('tr');
     security = woocommerce_admin_meta_boxes.add_order_note_nonce;
     $operate_status_list = $('#operate_status_list');
     $operate_status_list.empty();
 
-    complete_order();
+    if(typeof(order_id_list) == 'object' && typeof(order_id_list[0]) == 'object'){
+        complete_order();
+    }
+    else {
+        alert('Please enter valid format string');
+    }
+
 });

@@ -26,7 +26,7 @@
       <file leaf-file-name="order_operation.js" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/order_operation.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="90" column="37" selection-start="3166" selection-end="3166" vertical-scroll-proportion="0.37489945" vertical-offset="1424" max-vertical-offset="2667">
+            <state line="119" column="8" selection-start="4162" selection-end="4162" vertical-scroll-proportion="1.0828075" vertical-offset="1126" max-vertical-offset="2898">
               <folding />
             </state>
           </provider>
@@ -125,6 +125,19 @@
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
   </component>
   <component name="RunManager">
+    <configuration default="true" type="PHPUnitRunConfigurationType" factoryName="PHPUnit">
+      <TestRunner />
+      <method />
+    </configuration>
+    <configuration default="true" type="PhpLocalRunConfigurationType" factoryName="PHP Console">
+      <method />
+    </configuration>
+    <configuration default="true" type="JavascriptDebugType" factoryName="JavaScript Debug" singleton="true">
+      <method />
+    </configuration>
+    <configuration default="true" type="PhpUnitRemoteRunConfigurationType" factoryName="PHPUnit on Server">
+      <method />
+    </configuration>
     <list size="0" />
   </component>
   <component name="ShelveChangesManager" show_recycled="false" />
@@ -181,7 +194,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/order_operation.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="90" column="37" selection-start="3166" selection-end="3166" vertical-scroll-proportion="0.37489945" vertical-offset="1424" max-vertical-offset="2667">
+        <state line="119" column="8" selection-start="4162" selection-end="4162" vertical-scroll-proportion="1.0828075" vertical-offset="1126" max-vertical-offset="2898">
           <folding />
         </state>
       </provider>
