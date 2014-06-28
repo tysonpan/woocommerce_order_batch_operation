@@ -80,6 +80,11 @@ function complete_order(){
                     //complete the order
                     $('#complete_status'+order_id).removeClass('loading').addClass('ok');
                     $complete_button.remove();
+                },
+                error: function(){
+                    $('#complete_status'+order_id).removeClass('loading').addClass('fail');
+                },
+                complete: function(){
                     //send tracking number
                     jQuery.ajax({
                         url : 'http://' + document.domain + '/wp-admin/admin-ajax.php',
@@ -88,17 +93,16 @@ function complete_order(){
                         data:{action:'woocommerce_add_order_note',post_id:post_id,note:order_id_list.getTrackingNumber(order_id),note_type:'customer',security:security},
                         success: function(){
                             $('#note_status'+order_id).removeClass('loading').addClass('ok');
-                            //next order
-                            i++;
-                            complete_order();
                         },
                         error: function(){
                             $('#note_status'+order_id).removeClass('loading').addClass('fail');
+                        },
+                        complete: function(){
+                            //next order
+                            i++;
+                            complete_order();
                         }
                     });
-                },
-                error: function(){
-                    $('#complete_status'+order_id).removeClass('loading').addClass('fail');
                 }
             });
         }
